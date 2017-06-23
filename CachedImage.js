@@ -10,7 +10,8 @@ const {
     Image,
     ActivityIndicator,
     NetInfo,
-    Platform
+    Platform,
+    View
 } = ReactNative;
 
 
