@@ -160,35 +160,36 @@ const CachedImage = React.createClass({
     },
 
     renderLoader() {
-        const imageProps = getImageProps(this.props);
-        const imageStyle = [this.props.style, styles.loaderPlaceholder];
+        return (<View style={[this.props.style, {backgroundColor: '#F8F8F8'}]}></View>)
+//         const imageProps = getImageProps(this.props);
+//         const imageStyle = [this.props.style, styles.loaderPlaceholder];
 
-        const activityIndicatorProps = _.omit(this.props.activityIndicatorProps, ['style']);
-        const activityIndicatorStyle = this.props.activityIndicatorProps.style || styles.loader;
+//         const activityIndicatorProps = _.omit(this.props.activityIndicatorProps, ['style']);
+//         const activityIndicatorStyle = this.props.activityIndicatorProps.style || styles.loader;
 
-        const source = this.props.defaultSource;
+//         const source = this.props.defaultSource;
 
-        // if the imageStyle has borderRadius it will break the loading image view on android
-        // so we only show the ActivityIndicator
-        if (!source || (Platform.OS === 'android' && flattenStyle(imageStyle).borderRadius)) {
-            return (
-                <ActivityIndicator
-                    {...activityIndicatorProps}
-                    style={[imageStyle, activityIndicatorStyle]}/>
-            );
-        }
-        // otherwise render an image with the defaultSource with the ActivityIndicator on top of it
-        return this.props.renderImage({
-            ...imageProps,
-            style: imageStyle,
-            key: source.uri,
-            source,
-            children: (
-                <ActivityIndicator
-                    {...activityIndicatorProps}
-                    style={activityIndicatorStyle}/>
-            )
-        });
+//         // if the imageStyle has borderRadius it will break the loading image view on android
+//         // so we only show the ActivityIndicator
+//         if (!source || (Platform.OS === 'android' && flattenStyle(imageStyle).borderRadius)) {
+//             return (
+//                 <ActivityIndicator
+//                     {...activityIndicatorProps}
+//                     style={[imageStyle, activityIndicatorStyle]}/>
+//             );
+//         }
+//         // otherwise render an image with the defaultSource with the ActivityIndicator on top of it
+//         return this.props.renderImage({
+//             ...imageProps,
+//             style: imageStyle,
+//             key: source.uri,
+//             source,
+//             children: (
+//                 <ActivityIndicator
+//                     {...activityIndicatorProps}
+//                     style={activityIndicatorStyle}/>
+//             )
+//         });
     }
 });
 
