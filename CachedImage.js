@@ -144,6 +144,18 @@ const CachedImage = React.createClass({
     },
 
     render() {
+        // 如果有网络 直接显示图片 防止缓存的图片不完整
+        if (this.state.networkAvailable) {
+          const props = getImageProps(this.props);
+          const style = this.props.style || styles.image;
+          const source = this.props.source;
+          return this.props.renderImage({
+               ...props,
+               key: props.key || source.uri,
+               style,
+               source
+           });
+        }
         if (this.state.isCacheable && !this.state.cachedImagePath) {
             return this.renderLoader();
         }
